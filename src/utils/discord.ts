@@ -22,23 +22,23 @@ export default class DiscordClient extends Client {
   }
   async loadCommands() {
     this.commands = new Collection();
-    // const commandsPath = path.join(__dirname, "../commands");
-    // const commandFiles = readdirSync(commandsPath).filter(
-    //   (file) => file.endsWith(".js") || file.endsWith(".ts")
-    // );
+    const commandsPath = path.join(__dirname, "../commands");
+    const commandFiles = readdirSync(commandsPath).filter(
+      (file) => file.endsWith(".js") || file.endsWith(".ts")
+    );
 
-    // for (const file of commandFiles) {
-    //   const filePath = path.join(commandsPath, file);
-    //   const { default: command } = await import(filePath);
-    //   // Set a new item in the Collection with the key as the command name and the value as the exported module
-    //   if ("data" in command && "execute" in command) {
-    //     this.commands.set(command.data.name, command);
-    //   } else {
-    //     console.info(
-    //       `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
-    //     );
-    //   }
-    // }
+    for (const file of commandFiles) {
+      const filePath = path.join(commandsPath, file);
+      const { default: command } = await import(filePath);
+      // Set a new item in the Collection with the key as the command name and the value as the exported module
+      if ("data" in command && "execute" in command) {
+        this.commands.set(command.data.name, command);
+      } else {
+        console.info(
+          `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
+        );
+      }
+    }
   }
 }
 
