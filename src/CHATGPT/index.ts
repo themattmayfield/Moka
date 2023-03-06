@@ -10,7 +10,7 @@ const MokaChatGpt = ({ openai, MOKA_CHANNELS }: TMokaChatGpt) => {
     try {
       // Don't respond to yourself or other bots
       if (message.author.bot) return;
-
+      if (message.author == discordClient?.user) return;
       // Only respond to messages in the bot channels
       if (!MOKA_CHANNELS.includes(message.channel.id)) return;
 

@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --respawn --debounce=100 --exit-child --files src/app.ts",
     "build": "tsc",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "forever": "forever start"
   },
   "dependencies": {
     "discord.js": "^14.7.1",
