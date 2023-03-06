@@ -10,12 +10,12 @@ const MokaChatGpt = ({ openai, MOKA_CHANNELS }: TMokaChatGpt) => {
     try {
       // Don't respond to yourself or other bots
       if (message.author.bot) return;
-      if (message.author == discordClient?.user) return;
+      if (message.author == discordClient.user) return;
       // Only respond to messages in the bot channels
       if (!MOKA_CHANNELS.includes(message.channel.id)) return;
 
       // Only respond to messages that @ the bot
-      if (!message.mentions.has(discordClient?.user?.id)) return;
+      if (!message.mentions.has(discordClient.user?.id)) return;
 
       // Only respond to messages that are not too long
       if (message.content.length > 150) {
@@ -44,7 +44,7 @@ const MokaChatGpt = ({ openai, MOKA_CHANNELS }: TMokaChatGpt) => {
         stop: ["Moka:"],
       });
 
-      message.reply(`${response.data.choices[0].text}`);
+      await message.reply(`${response.data.choices[0].text}`);
       return;
     } catch (error) {
       console.log(error);
