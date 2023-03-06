@@ -14,32 +14,31 @@ import path from "path";
 import { variables } from "../lib/variables";
 
 export default class DiscordClient extends Client {
-  commands: Collection<any, any>; // use correct type :)
-  constructor(options: ClientOptions) {
-    super(options);
-    this.commands = new Collection();
-    this.loadCommands();
-  }
-  async loadCommands() {
-    this.commands = new Collection();
-    const commandsPath = path.join(__dirname, "../commands");
-    const commandFiles = readdirSync(commandsPath).filter(
-      (file) => file.endsWith(".js") || file.endsWith(".ts")
-    );
-
-    for (const file of commandFiles) {
-      const filePath = path.join(commandsPath, file);
-      const { default: command } = await import(filePath);
-      // Set a new item in the Collection with the key as the command name and the value as the exported module
-      if ("data" in command && "execute" in command) {
-        this.commands.set(command.data.name, command);
-      } else {
-        console.info(
-          `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
-        );
-      }
-    }
-  }
+  // commands: Collection<any, any>; // use correct type :)
+  // constructor(options: ClientOptions) {
+  //   super(options);
+  //   this.commands = new Collection();
+  //   this.loadCommands();
+  // }
+  // async loadCommands() {
+  //   this.commands = new Collection();
+  //   const commandsPath = path.join(__dirname, "../commands");
+  //   const commandFiles = readdirSync(commandsPath).filter(
+  //     (file) => file.endsWith(".js") || file.endsWith(".ts")
+  //   );
+  //   for (const file of commandFiles) {
+  //     const filePath = path.join(commandsPath, file);
+  //     const { default: command } = await import(filePath);
+  //     // Set a new item in the Collection with the key as the command name and the value as the exported module
+  //     if ("data" in command && "execute" in command) {
+  //       this.commands.set(command.data.name, command);
+  //     } else {
+  //       console.info(
+  //         `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
+  //       );
+  //     }
+  //   }
+  // }
 }
 
 export type SlashCommandHandler = (
@@ -49,7 +48,7 @@ export type SlashCommandHandler = (
 
 export interface SlashCommand {
   data: SlashCommandBuilder;
-  // execute: SlashCommandHandler;
+  execute: SlashCommandHandler;
 }
 
 export const discordClient = new DiscordClient({
