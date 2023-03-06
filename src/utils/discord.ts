@@ -49,7 +49,7 @@ export type SlashCommandHandler = (
 
 export interface SlashCommand {
   data: SlashCommandBuilder;
-  execute: SlashCommandHandler;
+  // execute: SlashCommandHandler;
 }
 
 export const discordClient = new DiscordClient({
