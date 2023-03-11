@@ -7,9 +7,9 @@
     "strict": true,
     "target": "es6",
     "lib": ["esnext", "DOM"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "module": "CommonJS",
+    "module": "commonjs",
   },
   "include": ["**/*.d.ts", "src/**/*", "seed.ts"],
   "ts-node": {
