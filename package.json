@@ -4,13 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "nodemon": "nodemon src/app.ts",
-    "dev": "ts-node-dev --respawn --debounce=100 --exit-child --files src/app.ts",
+    "start": "node build/app.js",
+    "dev": "nodemon build/app.js",
     "build": "tsc",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
-    "forever": "forever start"
+    "forever": "forever start",
+    "prestart:dev": "yarn build",
+    "prestart": "yarn build"
   },
   "dependencies": {
     "discord.js": "^14.7.1",
