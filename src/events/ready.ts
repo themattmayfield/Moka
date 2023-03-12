@@ -8,7 +8,7 @@ import {
 import serverStatChannelIDs from "../constants/serverStatChannelIDs";
 
 discordClient.on("ready", async () => {
-  console.log(`Logged innnn as ${discordClient.user?.tag}`);
+  console.log(`Logged in as ${discordClient.user?.tag}`);
   discordClient.user?.setPresence({
     activities: [
       {

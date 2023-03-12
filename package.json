@@ -6,11 +6,10 @@
   "scripts": {
     "start": "node build/index.js",
     "postinstall": "tsc",
-    "dev": "node build/index.js",
+    "dev": "nodemon build/index.js",
     "build": "tsc",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
-    "forever": "forever start",
     "prestart:dev": "yarn build"
   },
   "dependencies": {
