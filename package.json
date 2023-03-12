@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "start": "node build/index.js",
+    "postinstall": "tsc",
     "dev": "nodemon build/index.js",
     "build": "tsc",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "forever": "forever start",
-    "prestart:dev": "yarn build",
-    "prestart": "yarn build"
+    "prestart:dev": "yarn build"
   },
   "dependencies": {
     "discord.js": "^14.7.1",
