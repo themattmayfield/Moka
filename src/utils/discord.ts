@@ -84,3 +84,14 @@ export const getDiscordGuild = async (): Promise<Guild | undefined> => {
     return undefined;
   }
 };
+
+export const getDiscordChannelNameById = async (id: string) => {
+  const guild = await getDiscordGuild();
+  const channel = guild?.channels.cache.get(id);
+  return channel;
+};
+
+export const getDiscordUserCount = async () => {
+  const guild = await getDiscordGuild();
+  return guild?.memberCount;
+};
