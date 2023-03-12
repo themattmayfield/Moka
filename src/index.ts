@@ -1,7 +1,7 @@
 import express from "express";
 import http from "http";
 import { config } from "./config/config";
-import Logging from "./lib/Logging";
+// import Logging from "./lib/Logging";
 
 const router = express();
 
@@ -13,13 +13,13 @@ router.use(
     next: () => void
   ) => {
     /** Log the req */
-    Logging.info(
+    console.log(
       `Incomming - METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`
     );
 
     res.on("finish", () => {
       /** Log the res */
-      Logging.info(
+      console.log(
         `Result - METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}] - STATUS: [${res.statusCode}]`
       );
     });
@@ -94,7 +94,7 @@ router.use(
   ) => {
     const error = new Error("Not found");
 
-    Logging.error(error);
+    console.log(error);
 
     res.status(404).json({
       message: error.message,
@@ -105,7 +105,7 @@ router.use(
 http
   .createServer(router)
   .listen(config.server.port, () =>
-    Logging.info(`Server is running on port ${config.server.port}`)
+    console.log(`Server is running on port ${config.server.port}`)
   );
 
 //load environment variables
