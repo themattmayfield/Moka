@@ -1,5 +1,4 @@
 import { ActivityType } from "discord.js";
-import dotenv from "dotenv";
 
 import {
   discordClient,
@@ -8,10 +7,8 @@ import {
 } from "../utils/discord";
 import serverStatChannelIDs from "../constants/serverStatChannelIDs";
 
-dotenv.config();
-
 discordClient.on("ready", async () => {
-  console.log(`Logged in as ${discordClient.user?.tag}`);
+  console.log(`Logged innnn as ${discordClient.user?.tag}`);
   discordClient.user?.setPresence({
     activities: [
       {
